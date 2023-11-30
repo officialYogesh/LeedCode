@@ -1,15 +1,26 @@
 '''
+Task:
 
 '''
 
 
 '''
+Code Walkthrough:
 
 '''
+
+
+'''
+Best / Optimized Solution for review:
+
+'''
+
+
+# Test Cases
 
 
 def solution():
     pass
 
 
-solution()
+print(solution())
