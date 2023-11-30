@@ -15,7 +15,17 @@ Output: 2
 
 
 '''
+Faster solution:
 
+def majorityElement(self, nums: List[int]) -> int:
+  half = len(nums) / 2
+  counts = {}
+  for num in nums:
+      if num not in counts:
+          counts[num] =  0
+      counts[num] += 1
+      if counts[num] > half:
+          return num
 '''
 
 # set 01
