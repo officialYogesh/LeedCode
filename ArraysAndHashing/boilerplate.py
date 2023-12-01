@@ -20,7 +20,7 @@ Best / Optimized Solution for review:
 
 
 def solution():
-    pass
+  pass
 
 
 print(solution())
