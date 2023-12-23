@@ -67,4 +67,4 @@ val = 3
 nums = [0, 1, 2, 2, 3, 0, 4, 2]
 val = 2
 
-print(solution(nums, val))
+print(solution(nums, val), nums)
