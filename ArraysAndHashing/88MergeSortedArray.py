@@ -57,29 +57,16 @@ else m[k] = m[i]
 
 
 def mergeSortedArrays(nums1=[], m=0, nums2=[], n=0):
-    if m == 0 and n == 0:
-        return
+    i, j, k = m - 1, n - 1, m + n - 1
 
-    if m == 0 and n == 1:
-        nums1[0] = nums2[0]
-        return
-
-    i = m - 1
-    j = n - 1
-    k = m + n - 1
-
-    while i >= 0 or j >= 0:
-        if nums2[j] > nums1[1]:
-            nums1[k] = nums2[j]
-            j = j - 1
-        else:
+    while j >= 0:
+        if i >= 0 and nums1[i] > nums2[j]:
             nums1[k] = nums1[i]
-            i = i - 1
-        k = k - 1
-
-    if j >= 0:
-        nums1[: k+1] = nums2[:j+1]
-
+            i -= 1
+        else:
+            nums1[k] = nums2[j]
+            j -= 1
+        k -= 1
 
 # Set 01
 nums1 = [1, 2, 3, 0, 0, 0]
@@ -89,22 +76,22 @@ n = 3
 
 
 # Set 02
-nums1 = [1]
-m = 1
-nums2 = []
-n = 0
+# nums1 = [1]
+# m = 1
+# nums2 = []
+# n = 0
 
 # Set 03
-nums1 = [0]
-m = 0
-nums2 = [1]
-n = 1
+# nums1 = [0]
+# m = 0
+# nums2 = [1]
+# n = 1
 
 # Set 04
-nums1 = [1, 0]
-m = 1
-nums2 = [2]
-n = 1
+# nums1 = [1, 0]
+# m = 1
+# nums2 = [2]
+# n = 1
 
 mergeSortedArrays(nums1, m, nums2, n)
 
