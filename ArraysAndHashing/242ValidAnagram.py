@@ -36,7 +36,7 @@ Code Walkthrough:
 '''
 Best / Optimized Solution for review:
 
-1. Implement 1 dict, and then iterate through s and add the value count when repeated. On iterating throught t if key t is found, minus the value count. And then check for values of the dict for 0, and return True. (Implemented this approach)
+1. Implement 1 dict, and then iterate through s and add the value count when repeated. On iterating through t if key t is found, minus the value count. And then check for values of the dict for 0, and return True. (Implemented this approach)
 
 2. Sort the string and then compare
 '''
