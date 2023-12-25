@@ -1,7 +1,8 @@
 '''
 Task:
 
-Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+Given an array of integers nums which is sorted in ascending order, and an integer target, 
+write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 
 You must write an algorithm with O(log n) runtime complexity.
 
@@ -50,7 +51,7 @@ def solution(target, nums):
   left, right = 0, len(nums) - 1
 
   while left <= right:
-    m = (left + right) // 2 # Might cause Interger overflow when values of l and r are very big
+    m = (left + right) // 2 # Might cause Integer overflow when values of l and r are very big
     # m = l + ((r - l) // 2) to solve the overflow issue and get exactly same value of m
     if nums[m] > target:
       right = m - 1
