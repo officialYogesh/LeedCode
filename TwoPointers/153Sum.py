@@ -65,7 +65,7 @@ def solution(nums):
     while left < right:
       threeSum = a + nums[left] + nums[right]
       if threeSum > 0:
-        right -= 0
+        right -= 1
       elif threeSum < 0:
         left += 1
       else:
