@@ -47,6 +47,8 @@ return list(dic.values())
 
 # Test Cases
 # Set 01
+
+
 strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
 # Set 02
@@ -56,21 +58,34 @@ strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 # strs = ["a"]
 
 
+from collections import defaultdict
+
 def solution(strs):
-  if len(strs) < 2:
-    return [strs]
-  hashSet = {}
+  # if len(strs) < 2:
+  #   return [strs]
+  # hashSet = {}
 
+  # for s in strs:
+  #   sortedS = ''.join(sorted(s))
+  #   if hashSet.get(sortedS, 0) and sortedS == ''.join(sorted(s)):
+  #     newS = hashSet.get(sortedS, [])
+  #     newS.append(s)
+  #     hashSet[sortedS] = newS
+  #   else:
+  #     hashSet[sortedS] = [s]
+
+  # return list(hashSet.values())
+
+  res = defaultdict(list)
+  
   for s in strs:
-    sortedS = ''.join(sorted(s))
-    if hashSet.get(sortedS, 0) and sortedS == ''.join(sorted(s)):
-      newS = hashSet.get(sortedS, [])
-      newS.append(s)
-      hashSet[sortedS] = newS
-    else:
-      hashSet[sortedS] = [s]
+    counts = [0] * 26
+    for c in s:
+      counts[ord(c) - ord('a')] += 1
 
-  return list(hashSet.values())
+    res[tuple(counts)].append(s)
+
+  return list(res.values())
 
 
 print(solution(strs))
