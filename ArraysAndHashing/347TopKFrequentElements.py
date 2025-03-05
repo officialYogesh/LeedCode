@@ -42,18 +42,36 @@ Can explore heap
 
 # Test Cases
 # Set 01
+import heapq
+
+
 nums = [1,1,1,2,2,3]
 k = 2
 
 def solution(nums, k):
-  hashSet = {}
+  # hashSet = {}
   
-  for n in nums:
-    hashSet[n] = hashSet.get(n, 0) + 1
+  # for n in nums:
+  #   hashSet[n] = hashSet.get(n, 0) + 1
 
-  rSorted = sorted(hashSet.items(), key=lambda x: x[1], reverse=True)
-  return [x[0] for x in rSorted[:k]]
+  # rSorted = sorted(hashSet.items(), key=lambda x: x[1], reverse=True)
+  # return [x[0] for x in rSorted[:k]]
     
+  counts = {}
+  for num in nums:
+    counts[num] = 1 + counts.get(num, 0)
+
+  heap = []
+  for num in counts.keys():
+    heapq.heappush(heap, (counts[num], num))
+    if len(heap) > k:
+      heapq.heappop(heap)
+  
+  res = []
+  for i in range(k):
+    res.append(heapq.heappop(heap)[1])
+  
+  return res
 
 
 print(solution(nums, k))
