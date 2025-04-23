@@ -60,6 +60,20 @@ strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 
 from collections import defaultdict
 
+def solution2(strs):
+  hashmap = dict()
+
+  for st in strs:
+    sortedS = ''.join(sorted(st))
+    if hashmap.get(sortedS, None):
+      newS = hashmap.get(sortedS, [])
+      newS.append(st)
+      hashmap[sortedS] = newS
+    else:
+      hashmap[sortedS] = [st]
+  return list(hashmap.values())
+
+
 def solution(strs):
   # if len(strs) < 2:
   #   return [strs]
@@ -88,4 +102,4 @@ def solution(strs):
   return list(res.values())
 
 
-print(solution(strs))
+print(solution2(strs))
