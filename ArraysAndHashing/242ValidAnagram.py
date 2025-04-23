@@ -47,10 +47,10 @@ Best / Optimized Solution for review:
 s = "anagram"
 t = "nagaram"
 # Set 02
-s = "rat"
-t = "car"
+# s = "rat"
+# t = "car"
 
-def solution(s, t):
+def originalSolution(s, t):
   if len(s) != len(t):
     return False
   
@@ -67,6 +67,10 @@ def solution(s, t):
 
   return True
 
+def solution(s, t):
+  if len(s) != len(t):
+    return False
+  return sorted(s) == sorted(t)
   
 
 
