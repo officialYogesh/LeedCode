@@ -51,6 +51,14 @@ target = 9
 # nums = [3,3]
 # target = 6
 
+def solution2(nums, target):
+  hashmap = dict()
+
+  for i, num in enumerate(nums):
+    if hashmap.get((target - num), -1) != -1:
+      return [hashmap.get((target - num)), i]
+    hashmap[num] = i
+
 def solution(nums, target):
   prevMap = {}
   for i, n in enumerate(nums):
@@ -60,4 +68,4 @@ def solution(nums, target):
     prevMap[n] = i
 
 
-print(solution(nums, target))
+print(solution2(nums, target))
