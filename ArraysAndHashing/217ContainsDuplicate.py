@@ -35,18 +35,26 @@ Best / Optimized Solution for review:
 # Set 01
 nums = [1,2,3,1]
 # Set 02
-nums = [1,2,3,4]
+# nums = [1,2,3,4]
 # Set 03
-nums = [1,1,1,3,3,4,3,2,4,2]
+# nums = [1,1,1,3,3,4,3,2,4,2]
 
-def solution(nums):
+def originalSolution(nums):
   hashMap = set()
-
   for num in nums:
     if num in hashMap:
       return True
     else:
       hashMap.add(num)
+    return False
+
+def solution(nums):
+  hashmap = dict()
+  for n in nums:
+    if(hashmap.get(n, -1) != -1):
+      return True
+    else:
+      hashmap[n] = 1
   return False
 
 
