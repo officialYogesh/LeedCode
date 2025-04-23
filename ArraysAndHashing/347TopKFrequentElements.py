@@ -48,6 +48,24 @@ import heapq
 nums = [1,1,1,2,2,3]
 k = 2
 
+def solution2(nums, k):
+  counts = {}
+
+  for num in nums:
+    counts[num] = 1 + counts.get(num, 0)
+  
+  heap = []
+  for num in counts.keys():
+    heapq.heappush(heap, (counts[num], num))
+    if len(heap) > k:
+      heapq.heappop(heap)
+  
+  res = []
+  for i in range(k):
+    res.append(heapq.heappop(heap)[1])
+  
+  return res
+
 def solution(nums, k):
   # hashSet = {}
   
@@ -74,4 +92,4 @@ def solution(nums, k):
   return res
 
 
-print(solution(nums, k))
+print(solution2(nums, k))
