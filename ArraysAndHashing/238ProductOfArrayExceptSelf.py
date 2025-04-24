@@ -63,6 +63,24 @@ nums = [1,2,3,4]
 # Set 02
 nums = [-1,1,0,-3,3]
 
+
+def solution2(nums):
+  res = [1] * len(nums)
+  pre = 1
+  i = 0
+  while i < (len(nums) - 1):
+    res[i+1] = nums[i] * pre
+    pre *= nums[i]
+    i += 1
+  post = 1
+  i = len(nums) - 1
+  while i > 0:
+    res[i-1] = res[i-1] * nums[i] * post
+    post *= nums[i]
+    i -= 1
+
+  return res
+
 def solution(nums):
   output = [1] * len(nums)
   prefix, postfix = 1,1
