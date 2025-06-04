@@ -47,10 +47,62 @@ Best / Optimized Solution for review:
 
 '''
 
+from typing import List
 
 # Test Cases
 # Set 01
 nums = [-1,0,1,2,-1,-4]
+# Set 02
+nums = [1,2,-2,-1]
+
+class Solution2: #Return 
+  def threeSum(self, nums: List[int]) -> List[List[int]]:
+    return []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution:
+  def threeSum(self, nums: List[int]) -> List[List[int]]:
+    nums.sort()
+    res = []
+
+    for i, a in enumerate(nums):
+      if i > 0 and a == nums[i-1]:
+        continue
+      left, right = i + 1, len(nums) - 1
+
+      while left < right:
+        threeSumRes = a + nums[left] + nums[right]
+        if threeSumRes > 0:
+          right -= 1
+        elif threeSumRes < 0:
+          left += 1
+        else:
+          res.append([a, nums[left], nums[right]])
+          left += 1
+          while nums[left] == nums[left - 1] and left < right:
+            left += 1
+    
+    return res
 
 def solution(nums):
   res = []
@@ -76,4 +128,5 @@ def solution(nums):
 
   return res
 
-print(solution(nums))
+s = Solution()
+print(s.threeSum(nums))
