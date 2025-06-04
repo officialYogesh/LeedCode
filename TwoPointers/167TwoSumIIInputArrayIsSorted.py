@@ -52,6 +52,9 @@ Best / Optimized Solution for review:
 
 # Test Cases
 # Set 01
+from typing import List
+
+
 numbers = [2,7,11,15]
 target = 9
 # Set 02
@@ -60,6 +63,55 @@ target = 6
 # Set 03
 numbers = [-1,0]
 target = -1
+# Set 04
+numbers = [1,2,3,4]
+target = 3
+
+class Solution:
+  def twoSum(self, numbers: List[int], target: int) -> List[int]:
+    l, r = 0, len(numbers) - 1
+    
+    while l < r:
+      newSum = numbers[l] + numbers[r]
+      if newSum == target:
+        break
+      if newSum > target:
+        r -= 1
+      else:
+        l += 1
+
+    return [l+1, r+1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def solution(numbers, target):
   left = 0
@@ -74,5 +126,5 @@ def solution(numbers, target):
     else:
       right -= 1
 
-
-print(solution(numbers, target))
+s = Solution()
+print(s.twoSum(numbers, target))
