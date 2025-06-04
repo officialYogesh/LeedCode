@@ -42,7 +42,62 @@ Best / Optimized Solution for review:
 
 
 # Test Cases
+from typing import List
+
+
 height = [1,8,6,2,5,4,8,3,7]
+height = [2,1]
+height = [0,2]
+
+class Solution2: #For next practice
+  def maxArea(self, heights: List[int]) -> int:
+    return 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution:
+  def maxArea(self, heights: List[int]) -> int:
+    maxArea = 0
+    l, r = 0, len(heights) - 1
+    while l < r:
+      distance = r - l
+      newArea = distance * min(heights[l], heights[r])
+      maxArea = max(maxArea, newArea)
+      if heights[l] < heights[r]:
+        l += 1
+      else:
+        r -= 1
+
+    return maxArea
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def solution(height):
   left, right = 0, len(height) - 1
@@ -57,5 +112,5 @@ def solution(height):
 
   return maxArea
 
-
-print(solution(height))
+s = Solution()
+print(s.maxArea(height))
