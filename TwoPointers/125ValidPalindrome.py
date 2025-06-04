@@ -51,12 +51,64 @@ while i < j:
 return True
 '''
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Test Cases
 # Set 01
 s = "A man, a plan, a canal: Panama"
 # Set 02
-s = "race a car"
+# s = "race a car"
+# Set 03
+s = "Was it a car or a cat I saw?"
 
+class Solution2: #For next practice
+  def isPalindrome(self, s: str) -> bool:
+    return False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution:
+  def isPalindrome(self, s: str) -> bool:
+    alphanumericString = []
+    for char in s:
+      if char.isalpha() or char.isnumeric():
+        alphanumericString.append(char.lower())
+    
+    r = len(alphanumericString) - 1
+    for l in range(len(alphanumericString) // 2):
+      if alphanumericString[l] != alphanumericString[r]:
+        return False
+      r -= 1
+
+    return True
 
 def solution(s):
   alphanumericString = []
@@ -79,4 +131,5 @@ def solution(s):
   return True
 
 
-print(solution(s))
+sol = Solution()
+print(sol.isPalindrome(s))
