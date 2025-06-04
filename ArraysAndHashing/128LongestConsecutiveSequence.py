@@ -1,3 +1,5 @@
+import heapq
+
 '''
 Task:
 
@@ -51,9 +53,51 @@ nums = [0,3,7,2,5,8,4,6,0,1]
 # Set 04
 # nums = []
 
-import heapq
-
 class Solution:
+    def longestConsecutive3(self, nums):
+        pass
+
+    def longestConsecutive2(self, nums):
+        if not len(nums):
+            return 0
+        
+        heap = []
+        maxConsecutiveLength = 1
+        newConsecutiveLength = 1
+
+        for i in range(len(nums)):
+            heapq.heappush(heap, nums[i])
+
+        for i in range(len(nums) - 1):
+            last = heapq.heappop(heap)
+            current = heapq.heappop(heap)
+            if last == current:
+                heapq.heappush(heap, current)
+                continue
+            if last+1 == current:
+                newConsecutiveLength += 1
+            else:
+                newConsecutiveLength = 1
+            if maxConsecutiveLength < newConsecutiveLength:
+                maxConsecutiveLength = newConsecutiveLength
+            heapq.heappush(heap, current)
+        
+        return maxConsecutiveLength
+
+    def optimizedLongestConsecutive2(self, nums):
+        numSet = set(nums)
+        longest = 0
+
+        for num in numSet:
+            if num -1 not in numSet:
+                length = 0
+                while num + length in numSet:
+                    length += 1
+                
+                longest = max(longest, length)
+        
+        return longest
+
     def longestConsecutive(self, nums):
         if not len(nums):
             return 0
