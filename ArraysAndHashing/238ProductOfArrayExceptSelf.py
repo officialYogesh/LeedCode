@@ -61,38 +61,64 @@ Best / Optimized Solution for review:
 # Set 01
 nums = [1,2,3,4]
 # Set 02
-nums = [-1,1,0,-3,3]
+# nums = [-1,1,0,-3,3]
 
 
-def solution2(nums):
-  res = [1] * len(nums)
-  pre = 1
-  i = 0
-  while i < (len(nums) - 1):
-    res[i+1] = nums[i] * pre
-    pre *= nums[i]
-    i += 1
-  post = 1
-  i = len(nums) - 1
-  while i > 0:
-    res[i-1] = res[i-1] * nums[i] * post
-    post *= nums[i]
-    i -= 1
+class Solution:
+  def solutionPractice4(self, nums):
+    pass
 
-  return res
 
-def solution(nums):
-  output = [1] * len(nums)
-  prefix, postfix = 1,1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-  for i in range(len(nums)):
-    output[i] = prefix
-    prefix *= nums[i]
+  def solution3(self, nums):
+    res = [1] * len(nums)
+    prefix, postfix = 1,1
 
-  for i in range(len(nums) - 1, -1, -1):
-    output[i] *= postfix
-    postfix *= nums[i]
+    for i in range(len(nums)):
+      res[i] = prefix
+      prefix *= nums[i]
 
-  return output
+    for i in range(len(nums) - 1, -1, -1):
+      res[i] *= postfix
+      postfix *= nums[i]
+    
+    return res
 
-print(solution(nums))
+  def solution(self, nums):
+    output = [1] * len(nums)
+    prefix, postfix = 1,1
+    
+    for i in range(len(nums)):
+      output[i] = prefix
+      prefix *= nums[i]
+
+    for i in range(len(nums) - 1, -1, -1):
+      output[i] *= postfix
+      postfix *= nums[i]
+
+    return output
+
+s = Solution()
+print(s.solution(nums))
