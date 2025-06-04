@@ -1,3 +1,5 @@
+import heapq
+
 '''
 Task:
 
@@ -42,11 +44,54 @@ Can explore heap
 
 # Test Cases
 # Set 01
-import heapq
-
-
 nums = [1,1,1,2,2,3]
 k = 2
+
+# Set 02
+nums = [3,0,1,0]
+k = 1
+
+
+class Solution2: #Next Practice Set
+  def topKFrequent(self, nums, k):
+    pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution:
+  def topKFrequent(self, nums, k):
+    heap = []
+    count = {}
+    for num in nums:
+      count[num] = count.get(num, 0) + 1
+    for key in count.keys():
+      heapq.heappush(heap, (count[key], key))
+      if len(heap) > k:
+        heapq.heappop(heap)
+    
+    res = []
+    for item in heap:
+      res.append(item[1])
+    
+    return res
 
 def solution2(nums, k):
   counts = {}
@@ -91,5 +136,5 @@ def solution(nums, k):
   
   return res
 
-
-print(solution2(nums, k))
+s = Solution()
+print(s.topKFrequent(nums, k))
