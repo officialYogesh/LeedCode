@@ -22,9 +22,61 @@ Best / Optimized Solution for review:
 # Set 01
 strs = ["neet","code","love","you"]
 # Set 02
-strs = ["we","say",":","yes","!@#$%^&*()"]
+# strs = ["we","say",":","yes","!@#$%^&*()"]
 # Set 03
 
+class Solution4:
+    def encode(self, strs):
+        pass
+
+    def decode(self, s):
+        pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+class Solution3:
+    def encode(self, strs):
+        encodedString = ''
+        for s in strs:
+            encodedString += str(len(s)) + '#' + s
+        return encodedString
+
+    def decode(self, s):
+        decodedList = []
+        i = 0
+
+        while i < len(s):
+            j = i
+            while s[j] != "#":
+                j += 1
+            length = int(s[i:j])
+            i = j + 1
+            j = i + length
+            decodedList.append(s[i:j])
+            i = j
+
+        return decodedList
 class Solution2:
     def encode(self, strs):
         encodedString = ''
@@ -48,7 +100,7 @@ class Solution2:
 
         return decodedList
 
-sol = Solution2()
+sol = Solution3()
 print(sol.encode(strs))
 print(sol.decode(sol.encode(strs)))
 
