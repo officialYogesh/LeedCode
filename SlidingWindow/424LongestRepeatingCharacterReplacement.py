@@ -64,8 +64,58 @@ s = "ABAB"
 k = 2
 # Set 02
 s = "AABABBA"
-k = 1
+k = 2
 # Set 03
+s = "IMNJJTRMJEGMSOLSCCQICIHLQIOGBJAEHQOCRAJQMBIBATGLJDTBNCPIFRDLRIJHRABBJGQAOLIKRLHDRIGERENNMJSDSSMESSTR"
+k = 2 #Expected output 6
+
+class Solution2: #For next practice
+  def characterReplacement(self, s: str, k: int) -> int:
+    return 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution:
+  def characterReplacement(self, s: str, k: int) -> int:
+    result = 0
+    left = 0
+    charSet = {}
+
+    for right in range(len(s)):
+      charSet[s[right]] = charSet.get(s[right], 0) + 1
+
+      while (right - left + 1) - max(charSet.values()) > k:
+        charSet[s[left]] -= 1
+        left += 1
+      result = max(result, right - left + 1)
+
+    return result
+
+  def characterReplacementOptimal(self, s: str, k: int) -> int:
+    result = left = maxF = 0
+    charSet = {}
+
+    for right in range(len(s)):
+      charSet[s[right]] = charSet.get(s[right], 0) + 1
+      maxF = max(maxF, charSet[s[right]])
+      while (right - left + 1) - maxF > k:
+        charSet[s[left]] -= 1
+        left += 1
+      result = max(result, right - left + 1)
+
+    return result
 
 def solution(s, k):
   frequency = {}
@@ -83,4 +133,7 @@ def solution(s, k):
 
   return res
 
+sol = Solution()
 print(solution(s, k))
+print(sol.characterReplacement(s, k))
+print(sol.characterReplacementOptimal(s, k))
