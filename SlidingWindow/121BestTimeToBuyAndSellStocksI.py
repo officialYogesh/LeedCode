@@ -62,6 +62,48 @@ return 5
 '''
 
 
+from typing import List
+
+class Solution2: # For next practice
+    def maxProfit(self, prices: List[int]) -> int:
+        return 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if len(prices) < 2:
+            return 0
+        
+        profit = 0
+        buy, sell = 0, 1
+
+        while sell < len(prices):
+            if prices[buy] < prices[sell]:
+                currentProfit = prices[sell] - prices[buy]
+                profit = max(profit, currentProfit)
+            else:
+                buy = sell
+            sell += 1
+
+        return profit
+
 def bestTimeToBuyAndSellStocks(prices=[]):
     if len(prices) < 2:
         return 0
@@ -83,6 +125,13 @@ def bestTimeToBuyAndSellStocks(prices=[]):
 prices = [7, 1, 5, 3, 6, 4]
 
 # set 02
-prices = [7, 6, 4, 3, 1]
+# prices = [7, 6, 4, 3, 1]
 
-print(bestTimeToBuyAndSellStocks(prices))
+# Set 03
+prices=[2,1,2,1,0,1,2] # Expected 2
+
+# Set 04
+prices=[5,1,5,6,7,1,10] # Expected 9
+
+s = Solution()
+print(s.maxProfit(prices))
