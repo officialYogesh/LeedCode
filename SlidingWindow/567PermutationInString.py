@@ -43,8 +43,50 @@ Best / Optimized Solution for review:
 s1 = "ab"
 s2 = "eidbaooo"
 # Set 02
-s1 = "ab"
-s2 = "eidboaoo"
+s1="ab"
+s2="lecabee"
+# Set 03
+s1="abc"
+s2="bbbca"
+# Set 04
+s1="rokx"
+s2="otrxvfszxroxrzdsltg"
+
+class Solution2: # For next practice
+  def checkInclusion(self, s1: str, s2: str) -> bool:
+    return False
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+class Solution:
+  def checkInclusion(self, s1: str, s2: str) -> bool:
+    if len(s1) > len(s2): return False
+
+    countS1, countS2 = [0] * 26, [0] * 26
+
+    for i in range(len(s1)):
+      countS1[ord(s1[i]) - ord("a")] += 1
+      countS2[ord(s2[i]) - ord("a")] += 1
+
+    for i in range(len(s2) - len(s1)):
+      if countS1 == countS2: return True
+
+      countS2[ord(s2[i]) - ord("a")] -= 1
+      countS2[ord(s2[i + len(s1)]) - ord("a")] += 1
+
+    return countS1 == countS2
 
 def solution(s1, s2):
   if len(s1) > len(s2):
@@ -82,4 +124,5 @@ def solution(s1, s2):
   
   return matches == 26
 
-print(solution(s1, s2))
+sol = Solution()
+print(sol.checkInclusion(s1, s2))
