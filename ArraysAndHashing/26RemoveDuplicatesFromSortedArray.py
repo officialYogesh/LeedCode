@@ -42,34 +42,22 @@ Constraints:
 -100 <= nums[i] <= 100
 nums is sorted in non-decreasing order.
 '''
+from typing import List
 
 
-'''
-nums = [1,1,2]
-i = 0, j = 1
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums: return 0
+        j = 0
+        for i in range(len(nums)):
+            if (nums[i] != nums[j]):
+                j += 1
+                nums[j] = nums[i]
 
-nums[i] == nums[j], 1 == 1, True,
-nums[i] = nums[j]
-j = j + 1
-
-i = 1, j = 2
-1 == 2, False,
-'''
-
-
-def solution(nums=[]):
-    i = 0
-
-    for j in range(len(nums)):
-        if nums[j] == nums[j+1]:
-            nums[i] = nums[j]
-            i += 1
-    return i
-
+        return j + 1
 
 # set 01
 nums = [1, 1, 2]
 
-print(solution(nums))
-
-print(nums)
+sol = Solution()
+print(sol.removeDuplicates(nums))
