@@ -47,16 +47,17 @@ Constraints:
 0 <= val <= 100
 '''
 
+from typing import List
 
-def solution(nums=[], val=0):
-    i = 0
-
-    for j in range(len(nums)):
-        if nums[j] != val:
-            nums[i] = nums[j]
-            i += 1
-
-    return i
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        index = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[index] = nums[i]
+                index += 1
+        
+        return index
 
 
 # set 01
@@ -67,4 +68,5 @@ val = 3
 nums = [0, 1, 2, 2, 3, 0, 4, 2]
 val = 2
 
-print(solution(nums, val), nums)
+sol = Solution()
+print(sol.removeElement(nums, val), nums)
