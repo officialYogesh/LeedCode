@@ -23,8 +23,10 @@ Best / Optimized Solution for review:
 
 # Set 03
 
-def solution():
-  pass
+class Solution:
+  def method(self) -> None:
+    pass
 
 
-print(solution())
+solution = Solution()
+print(solution.method())
