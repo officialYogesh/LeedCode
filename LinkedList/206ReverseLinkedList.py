@@ -48,10 +48,28 @@ Best / Optimized Solution for review:
 
 # Test Cases
 # Set 01
+from typing import Optional
+
+
 head = [1,2,3,4,5]
 # Set 02
 
 # Set 03
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+      def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+         previous, current = None, head
+
+         while current:
+            temp = current.next
+            current.next = previous
+            previous = current
+            current = temp
+         
+         return previous
 
 class LinkedList:
   def __init__(self):
@@ -79,10 +97,10 @@ class LinkedList:
         print(current_node.val)
         current_node = current_node.next
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 
     
 
