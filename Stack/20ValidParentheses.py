@@ -64,25 +64,27 @@ def isValid(self, s):
 # Set 01
 s = "()"
 # Set 02
-s = "()[]{}"
+# s = "()[]{}"
 # Set 03
-s = "(]"
+# s = "(]"
 
 from collections import deque
 
-def solution(s):
-  s = list(s)
-  hashMap = dict({"(": ")", "[": "]", "{": "}"})
-  stack = deque()
+class Solution:
+  def isValid(self, s: str) -> bool:
+    stack = []
+    closeToOpen = { ")" : "(", "]" : "[", "}" : "{" }
 
-  for char in s:
-    if char in ['(', '[', '{']:
-      stack.append(char)
-    else:
-      top = stack.pop()
-      if hashMap[top] != char:
-        return False
+    for c in s:
+      if c in closeToOpen:
+        if stack and stack[-1] == closeToOpen[c]:
+          stack.pop()
+        else:
+          return False
+      else:
+        stack.append(c)
+    
+    return True if not stack else False
 
-  return True
-  
-print(solution(s))
+sol = Solution()
+print(sol.isValid(s))
