@@ -55,12 +55,31 @@ Best / Optimized Solution for review:
 
 # Test Cases
 # Set 01
+from typing import List
+
+
 nums = [3,4,5,1,2]
 # Set 02
 nums = [4,5,6,7,0,1,2]
 # Set 03
-nums = [11,13,15,17]
+# nums = [11,13,15,17]
 
+class Solution:
+  def findMin(self, nums: List[int]) -> int:
+    res = nums[0]
+    left,right = 0, len(nums) - 1
+
+    while left <= right:
+      if nums[left] < res:
+        res = nums[left]
+      
+      # mid = (left + right) // 2 
+      mid = left + ((right - left) // 2)
+      if nums[mid] >= nums[left]:
+        left = mid + 1
+      else:
+        right = mid - 1
+    return 0
 
 def solution(nums):
   left, right = 0, len(nums) - 1
